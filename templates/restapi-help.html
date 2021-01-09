@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Diabetes Early Detection System - REST API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p>To receive the prediction result from this API please POST the following JSON array to this path <b>"/"</b>.</p>
+    <pre>
+[43, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
+    </pre>
+    <p>The array contains 16 elements which in the following sequence.</p>
+    <ol>
+        <li>Age (Must be a number)</li>
+        <li>Gender (Male = 1, Female = 0)</li>
+        <li>Polyuria (Yes = 1, No = 0)</li>
+        <li>Polydipsia (Yes = 1, No = 0)</li>
+        <li>Sudden weight loss (Yes = 1, No = 0)</li>
+        <li>Weakness (Yes = 1, No = 0)</li>
+        <li>Polyphagia (Yes = 1, No = 0)</li>
+        <li>Genital thrush (Yes = 1, No = 0)</li>
+        <li>Visual blurring (Yes = 1, No = 0)</li>
+        <li>Itching (Yes = 1, No = 0)</li>
+        <li>Irritability (Yes = 1, No = 0)</li>
+        <li>Delayed healing (Yes = 1, No = 0)</li>
+        <li>Partial paresis (Yes = 1, No = 0)</li>
+        <li>Muscle stiffness (Yes = 1, No = 0)</li>
+        <li>Alopecia (Yes = 1, No = 0)</li>
+        <li>Obesity (Yes = 1, No = 0)</li>
+    </ol>
+    <p>The example of sending the data using <b>curl</b> can be done with this command.</p>
+<pre>
+curl -X POST -H "Content-Type: application/json" -d '[43, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]' http://localhost:5000
+</pre>
+    <p>The returned result from API will be like following.</p>
+<pre>
+{
+  "result": "POSITIVE"
+}
+</pre>
+    <p>Or</p>
+<pre>
+{
+  "result": "NEGATIVE"
+}
+</pre>
+</body>
+</html>
