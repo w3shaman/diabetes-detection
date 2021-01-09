@@ -213,6 +213,42 @@ elif (args.app_mode.lower() == 'web'):
         debug = True
 
     app.run(debug=debug)
+elif (args.app_mode.lower() == 'restapi'):
+    '''
+    REST API using Flask.
+    '''
+    from flask import Flask
+
+    app = Flask(__name__)
+
+    @app.route('/', methods=['GET'])
+    def help():
+        from flask import render_template
+
+        return render_template('restapi-help.html')
+
+    @app.route('/', methods=['POST'])
+    def diabetes_detection():
+        from flask import request, jsonify
+
+        try:
+            data = request.get_json()
+
+            label = clf.predict([data])
+            if label[0] == 0:
+                prediction = 'NEGATIVE'
+            else:
+                prediction = 'POSITIVE'
+
+            return jsonify({'result': prediction})
+        except Exception as e:
+            return jsonify({'result': 'ERROR: ' + str(e)}), 500
+
+    debug = False
+    if args.verbose == 'y':
+        debug = True
+
+    app.run(debug=debug)
 else:
     import tkinter as tk
 

@@ -1,5 +1,5 @@
 # Diabetes Early Detection
-This the implementation of early diabetes detection using machine learning. Rather than just creating the machine learning model, this application is the real implementation with three user interfaces: interactive text mode (CLI), web browser based (Web), and graphical/desktop based (GUI). From those three interfaces, user must choose the some known diabetes symptoms. After submitting the symptoms, the application will predict the result if it's POSITIVE or NEGATIVE. 
+This the implementation of early diabetes detection using machine learning. Rather than just creating the machine learning model, this application is the real implementation with three user interfaces: interactive text mode (CLI), web browser based (Web),  graphical/desktop based (GUI), and also API mode (RESTAPI). From those four interfaces, user must input the age, gender, then choose some known diabetes symptoms. After submitting the symptoms, the application will predict the result if it's POSITIVE or NEGATIVE.
 
 The algorithm used for the machine learning is SVM (Support Vector Machine). Before generating the machine learning model, the application used grid search cross validation for determining the most optimal parameter for the SVM algorithm. The trained model can also be saved into a file so the application can load it later and doesn't have to repeat the training process.
 
@@ -29,6 +29,12 @@ To start the application in web browser based. Then open **http://localhost:5000
 
 ``
 python diabetes_early_detection.py --mode web
+``
+
+To start the application in REST API mode. Then open **http://localhost:5000** on your web browser to see the simple documentation about using the API.
+
+``
+python diabetes_early_detection.py --mode restapi
 ``
 
 ## Dataset source
