@@ -1,7 +1,10 @@
 # Diabetes Early Detection
-This the implementation of farly diabetes detection using machine learning. Rather than just creating the machine learning model, this application is the real implementation with three user interfaces: interactive text mode (CLI), web browser based (Web), and graphical/desktop based (GUI).
+This the implementation of early diabetes detection using machine learning. Rather than just creating the machine learning model, this application is the real implementation with three user interfaces: interactive text mode (CLI), web browser based (Web), and graphical/desktop based (GUI). From those three interfaces, user must choose the some known diabetes symptoms. After submitting the symptoms, the application will predict the result if it's POSITIVE or NEGATIVE. 
 
 The algorithm used for the machine learning is SVM (Support Vector Machine). Before generating the machine learning model, the application used grid search cross validation for determining the most optimal parameter for the SVM algorithm. The trained model can also be saved into a file so the application can load it later and doesn't have to repeat the training process.
+
+## Disclaimer
+This application is for learning purpose only. The prediction result may not meet your expectation.
 
 ## Usage
 The complete arguments for running the application can be viewed using the following command.
