@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Diabetes Early Detection System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form method="post" action="">
+        {% if prediction != '' %}
+            <p><b>{{ prediction }}</b></p>
+        {% endif %}
+        {% if error != '' %}
+            <p style="color:red"><b>{{ error }}</b></p>
+        {% endif %}
+        <fieldset>
+            <legend>Profile</legend>
+            <p>Age:<br><input type="number" name="age" value="{{ post_data['age'] }}"></p>
+            <p>Gender:<br>
+                <input type="radio" name="gender" value="m"{{ ' checked' if post_data['gender'] == 'm' else '' }}>Male
+                <input type="radio" name="gender" value="f"{{ ' checked' if post_data['gender'] == 'f' else '' }}>Female
+            </p>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Symptoms</legend>
+            {% for s in symptoms %}
+                <p>{{ s }}:<br>
+                    <input type="radio" name="s{{ loop.index - 1 }}" value="y"{{ ' checked' if post_data['s' + (loop.index - 1)|string] == 'y' else '' }}>Yes
+                    <input type="radio" name="s{{ loop.index - 1 }}" value="n"{{ ' checked' if post_data['s' + (loop.index - 1)|string] == 'n' else '' }}>No
+                </p>
+            {% endfor %}
+        </fieldset>
+        <br>
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+</html>
