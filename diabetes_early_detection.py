@@ -208,11 +208,26 @@ elif (args.app_mode.lower() == 'web'):
 
         return render_template('index.html', symptoms=cols, prediction=prediction, post_data=post_data, error=error)
 
+    '''
+    Use gevent for as web server with the capabilities of
+    handling asynchronous requests
+    '''
+    from gevent import monkey
+    monkey.patch_all()
+
     debug = False
     if args.verbose == 'y':
         debug = True
 
-    app.run(debug=debug)
+    '''
+    Here we start the WSGI server.
+    '''
+    from gevent.pywsgi import WSGIServer
+
+    print('Web server listening on port 5000.')
+    app.debug = debug
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server.serve_forever()
 elif (args.app_mode.lower() == 'restapi'):
     '''
     REST API using Flask.
@@ -244,11 +259,26 @@ elif (args.app_mode.lower() == 'restapi'):
         except Exception as e:
             return jsonify({'result': 'ERROR: ' + str(e)}), 500
 
+    '''
+    Use gevent for as web server with the capabilities of
+    handling asynchronous requests
+    '''
+    from gevent import monkey
+    monkey.patch_all()
+
     debug = False
     if args.verbose == 'y':
         debug = True
 
-    app.run(debug=debug)
+    '''
+    Here we start the WSGI server.
+    '''
+    from gevent.pywsgi import WSGIServer
+
+    print('Web server listening on port 5000.')
+    app.debug = debug
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server.serve_forever()
 else:
     import tkinter as tk
 
