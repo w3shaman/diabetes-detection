@@ -37,6 +37,21 @@ To start the application in REST API mode. Then open **http://localhost:5000** o
 python diabetes_early_detection.py --mode restapi
 ``
 
+## Save and Load Training Model
+We can also save then load the training model later so the application doesn't have to do the training process on every start.
+
+For saving the generated training model, please add the following parameter when running the application.
+
+``
+--generate-pickle models/diabetes_early_detection.pkl
+``
+
+For loading the generated training model, we can add the following parameter instead of the above.
+
+``
+--load-pickle models/diabetes_early_detection.pkl
+``
+
 ## Dataset source
 The dataset for generating the machine learning model is taken from the following URL:
 
